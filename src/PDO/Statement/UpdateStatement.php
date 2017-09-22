@@ -77,7 +77,19 @@ class UpdateStatement extends StatementContainer
 
         return $sql;
     }
-
+    
+    /**
+     * @param [type] $column
+     * @param [type] $steps
+     * @return void
+     */
+    public function increase($column, $steps = 1)
+    {
+        $this->columns[] = $column . ' = ' . $column . ' + ? ';
+        $this->values[] = $steps;
+        return $this;
+    }
+    
     /**
      * @return int
      */
